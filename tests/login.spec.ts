@@ -1,9 +1,9 @@
 import { test } from '@playwright/test'
-import {LoginPage} from '../pages/login-page'
+import { LoginPage } from '../pages/login-page'
 
-let loginPage : LoginPage
+let loginPage: LoginPage
 
-test.beforeEach(async ({page})=> {
+test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page)
 })
 
@@ -19,7 +19,7 @@ test('Senha incorreta', async ({ page }) => {
     await loginPage.toastMessage('Oops! Credenciais inválidas :(')
 })
 
-test('Nome obrigatório', async ({page})=>{
+test('Nome obrigatório', async ({ page }) => {
     await loginPage.go()
     await loginPage.signIn('', 'abc123')
     await loginPage.toastMessage('Informe o seu nome de usuário!')
